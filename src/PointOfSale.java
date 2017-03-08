@@ -6,6 +6,7 @@ public class PointOfSale {
 	private Item[] items; 
 	private RewardsCards[] rewards;
 	private Order order = new Order();
+	private int cash = 0;
 	PointOfSale(String items, String rewards) {
 		loadItems(items);
 		loadRewards(rewards);
@@ -38,6 +39,11 @@ public class PointOfSale {
 	public void displayTotal(Customer customer) {
 		int total = order.calculatePrice();
 		System.out.println("Your total is: " + total);
+	}
+	
+	public void recievePay(int cash) {
+		this.cash += cash;
+		clearOrder();
 	}
 	
 	private void clearOrder() {
